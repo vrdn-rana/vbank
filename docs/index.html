@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>V-Bank | Try the demo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏦%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#f0f4f8;--cd:#fff;--tx:#1f2933;--mu:#6b7785;--pr:#004085;--p2:#002752;--bd:#dde3ea;--ok:#1f9d55;--er:#d64545;--wn:#b7791f;--ti:#e9f5ff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e141b;--cd:#171f29;--tx:#e6edf3;--mu:#97a4b3;--pr:#2f6fc0;--p2:#2560a8;--bd:#2a3644;--ok:#43c07a;--er:#f06b6b;--wn:#e0a840;--ti:#1a2a3d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e141b;--cd:#171f29;--tx:#e6edf3;--mu:#97a4b3;--pr:#2f6fc0;--p2:#2560a8;--bd:#2a3644;--ok:#43c07a;--er:#f06b6b;--wn:#e0a840;--ti:#1a2a3d;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+body{background:var(--bg);color:var(--tx);line-height:1.5}
+.w{max-width:1000px;margin:0 auto;padding:0 1rem}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 0}
+.nav b{color:var(--pr);font-size:1.3rem}.nav a{color:var(--mu);text-decoration:none;margin-left:1.2rem;font-size:.9rem}
+.hero{text-align:center;padding:2.5rem 0 1.5rem}
+.hero h1{font-size:clamp(1.8rem,5vw,2.8rem);color:var(--pr);line-height:1.2}
+.hero p{color:var(--mu);max-width:620px;margin:1rem auto}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:1rem 0 1.5rem}
+.chips span{background:var(--ti);color:var(--pr);border:1px solid var(--bd);padding:.2rem .7rem;border-radius:99px;font-size:.8rem;font-weight:600}
+.b{background:var(--pr);color:#fff;border:0;border-radius:6px;padding:.6rem 1.1rem;font-weight:600;font-size:.9rem;cursor:pointer}
+.b:hover{background:var(--p2)}.b.g{background:transparent;color:var(--pr);border:2px solid var(--pr)}
+.b.r{background:var(--er)}.b.w{background:var(--wn)}.b.s{padding:.3rem .7rem;font-size:.8rem}
+.shell{background:var(--cd);border:1px solid var(--bd);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08);margin:1rem 0 2rem}
+.tb{background:var(--pr);color:#fff;display:flex;align-items:center;gap:.8rem;padding:.6rem 1rem;flex-wrap:wrap}
+.tabs{display:flex;gap:.2rem;overflow-x:auto;flex:1}
+.tab{background:none;border:0;color:#dbe7f5;padding:.45rem .7rem;border-radius:5px;cursor:pointer;font-size:.85rem;white-space:nowrap}
+.tab.on,.tab:hover{background:rgba(0,0,0,.25);color:#fff}
+.mu2{font-size:.85rem;color:#dbe7f5}
+.mn{padding:1.2rem}.mn h2{color:var(--pr);margin-bottom:.8rem;font-size:1.25rem}
+.ft{padding:.7rem 1rem;border-top:1px solid var(--bd);font-size:.8rem;color:var(--mu)}
+.lk{background:none;border:0;color:var(--pr);text-decoration:underline;cursor:pointer;font-size:.8rem}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;padding:1rem}
+.g2 .cd2{display:flex;flex-direction:column;gap:.6rem}
+.cd2{border:1px solid var(--bd);border-radius:10px;padding:1rem;background:var(--cd)}
+.cd2 h3{color:var(--pr)}.mu{color:var(--mu);font-size:.88rem}
+code{background:var(--ti);padding:.3rem .5rem;border-radius:5px;font-size:.8rem;word-break:break-all}
+input,select{width:100%;padding:.6rem;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--tx);font-size:.9rem}
+.row{display:flex;gap:.6rem;margin-bottom:1rem;flex-wrap:wrap}.row input{flex:1;min-width:140px}
+.fm{display:grid;gap:.7rem;max-width:420px}
+.sc{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:.85rem}
+th,td{padding:.5rem;text-align:left;border-bottom:1px solid var(--bd);white-space:nowrap}th{color:var(--mu);font-size:.75rem;text-transform:uppercase}
+.bd{padding:.1rem .5rem;border-radius:99px;font-size:.72rem;font-weight:700;background:var(--ti)}
+.bd.ACTIVE,.ok{color:var(--ok)}.bd.PENDING{color:var(--wn)}.bd.REJECTED,.er{color:var(--er)}
+.bal{background:var(--ti);border:1px solid var(--bd);border-radius:10px;padding:1.2rem;text-align:center;margin:1rem 0}
+.bal h2{color:var(--ok);font-size:2rem;margin:0}
+.av{width:64px;height:64px;border-radius:50%;background:var(--pr);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:700;margin:0 auto .5rem}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:50;padding:1rem}
+.md{background:var(--cd);border-radius:10px;padding:1.4rem;max-width:380px;width:100%;display:grid;gap:.7rem}
+.code{font-size:1.8rem;letter-spacing:6px;color:var(--er);text-align:center;font-weight:700}
+.ts{position:fixed;bottom:calc(1rem + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--ok);color:#fff;padding:.6rem 1rem;border-radius:6px;z-index:60;font-size:.9rem;max-width:90%}
+.ts.e{background:var(--er)}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;margin-bottom:2rem}
+.fg ul{list-style:none;display:grid;gap:.4rem;margin-top:.6rem}
+.fg li button{width:100%;text-align:left;background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:.5rem .7rem;color:var(--tx);cursor:pointer;font-size:.85rem}
+.fg li button:hover{border-color:var(--pr)}.fg li small{display:block;color:var(--mu)}
+footer{text-align:center;color:var(--mu);font-size:.8rem;padding:1rem 0 2rem}
+</style>
+</head>
+<body>
+<div class="w">
+<div class="nav"><b>🏦 V-Bank</b><span><a href="#demo">Live demo</a><a href="#features">Features</a><a id="repo" href="#" hidden>GitHub</a></span></div>
+<section class="hero">
+<h1>A full-stack banking app you can try in one click</h1>
+<p>Admin and customer portals with OTP-verified transactions and Razorpay deposits. No sign-up needed: pick a role and explore every feature with seeded demo accounts.</p>
+<div class="chips"><span>Java 17</span><span>Spring Boot</span><span>Spring Data JPA</span><span>MySQL</span><span>JSP</span><span>Razorpay</span><span>Email OTP</span></div>
+<button class="b" data-a="q" data-e="admin@vbank.demo" data-p="Admin@123" data-sc="1">Enter as Admin</button>
+<button class="b g" data-a="q" data-e="riya@vbank.demo" data-p="Demo@123" data-sc="1">Enter as Customer</button>
+</section>
+<section id="demo"><div class="shell" id="app"></div></section>
+<section id="features">
+<div class="fg">
+<div class="cd2"><h3>🛡️ Admin features</h3><ul id="fa"></ul></div>
+<div class="cd2"><h3>👤 Customer features</h3><ul id="fc"></ul></div>
+</div>
+</section>
+<footer>Demo sandbox: sample data runs in your browser and mirrors the real app’s screens and rules.</footer>
+</div>
+<script>
+const REPO_URL="";
+const $=s=>document.querySelector(s),inr=n=>"₹"+Number(n).toLocaleString("en-IN"),
+E=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let S,U=null,V="",F=null,T=null;
+const acc=n=>S.a.find(a=>a.no==n);
+function tx(f,t,amt,type,m=0){S.t.unshift({id:S.t.length?S.t[0].id+1:1,f,t,amt,type,at:new Date(Date.now()-m*6e4)})}
+function seed(){S={nx:1005,t:[],a:[
+{no:1001,name:"V-Bank Admin",email:"admin@vbank.demo",pw:"Admin@123",type:"CURRENT",bal:500000,role:"ADMIN",st:"ACTIVE"},
+{no:1002,name:"Riya Sharma",email:"riya@vbank.demo",pw:"Demo@123",type:"SAVINGS",bal:42500,role:"CUSTOMER",st:"ACTIVE"},
+{no:1003,name:"Arjun Mehta",email:"arjun@vbank.demo",pw:"Demo@123",type:"CURRENT",bal:18200,role:"CUSTOMER",st:"ACTIVE"},
+{no:1004,name:"Neha Verma",email:"neha@vbank.demo",pw:"Demo@123",type:"SAVINGS",bal:5000,role:"CUSTOMER",st:"PENDING"}]};
+tx(1002,1002,20000,"DEPOSIT",300);tx(1002,1003,1500,"TRANSFER",120);tx(1003,1003,2000,"WITHDRAW",60);
+tx(1002,1002,5000,"DEPOSIT",30);tx(1003,1002,800,"TRANSFER",10);tx(1003,1003,2500,"DEPOSIT",5);F=T=null}
+function toast(m,e){const t=document.createElement("div");t.className="ts"+(e?" e":"");t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),3200)}
+function modal(h,w){const m=document.createElement("div");m.className="ov";m.innerHTML=`<div class="md">${h}</div>`;document.body.append(m);w(m,()=>m.remove())}
+function otp(why,done){const c=100000+Math.floor(Math.random()*900000);
+modal(`<h3>Email OTP verification</h3><p class="mu">${why} The real app emails this code via Gmail SMTP; the sandbox shows it here.</p><div class="code">${c}</div><input id="o" value="${c}"><button class="b" id="ok">Verify</button><button class="b g" id="x">Cancel</button>`,
+(m,cl)=>{m.querySelector("#ok").onclick=()=>{if(m.querySelector("#o").value==c){cl();done()}else toast("Invalid OTP",1)};m.querySelector("#x").onclick=cl})}
+function pay(a,done){modal(`<h3>Razorpay checkout (test mode)</h3><p class="mu">Card ending 4242 · Test payment, no real money moves.</p><button class="b" id="ok">Pay ${inr(a)}</button><button class="b g" id="x">Cancel</button>`,
+(m,cl)=>{m.querySelector("#ok").onclick=()=>{cl();done()};m.querySelector("#x").onclick=cl})}
+const badge=s=>`<span class="bd ${s}">${s}</span>`,head=t=>`<h2>${t}</h2>`,
+tbl=(h,r)=>`<div class="sc"><table><tr>${h.map(x=>`<th>${x}</th>`).join("")}</tr>${r.join("")||`<tr><td colspan="9" class="mu">No records</td></tr>`}</table></div>`;
+const fdt=d=>d.toLocaleString("en-IN",{dateStyle:"medium",timeStyle:"short"});
+const txT=(l,me)=>tbl(["ID","Type","From","To","Amount","Date"],l.map(t=>{const cr=me&&(t.type=="DEPOSIT"||t.t==me&&t.f!=me);
+return `<tr><td>#${t.id}</td><td>${t.type}</td><td>${t.f}</td><td>${t.t}</td><td class="${me?(cr?"ok":"er"):""}">${me?(cr?"+":"−"):""}${inr(t.amt)}</td><td>${fdt(t.at)}</td></tr>`}));
+const aTbl=(l,ac)=>tbl(["No.","Name","Email","Type","Balance","Status",ac?"Action":""],l.map(a=>`<tr><td>${a.no}</td><td>${E(a.name)}</td><td>${E(a.email)}</td><td>${a.type}</td><td>${inr(a.bal)}</td><td>${badge(a.st)}</td><td>${ac?`<button class="b s" data-a="ap" data-n="${a.no}" data-s="ACTIVE">Approve</button> <button class="b s r" data-a="ap" data-n="${a.no}" data-s="REJECTED">Reject</button>`:""}</td></tr>`));
+const AT=[["all","All Accounts"],["active","Active"],["pending","Pending"],["search","Search"],["create","Create"],["adep","Deposit"],["awd","Withdraw"],["atx","Transactions"]],
+CT=[["home","Home"],["dep","Deposit"],["xfer","Transfer"],["txs","All Transactions"],["mini","Mini Statement"]];
+const amt=(id,ph)=>`<input id="${id}" type="number" min="1" placeholder="${ph}">`;
+const VA={
+all:()=>head("All Accounts")+aTbl(S.a),
+active:()=>head("Active Accounts")+aTbl(S.a.filter(a=>a.st=="ACTIVE")),
+pending:()=>head("Pending Approvals")+`<p class="mu" style="margin-bottom:.8rem">New sign-ups wait here until an admin approves them.</p>`+aTbl(S.a.filter(a=>a.st=="PENDING"),1),
+search:()=>{const a=F&&acc(F);return head("Search Account")+`<div class="row"><input id="q" type="number" placeholder="Account no. (try 1002)" value="${F||""}"><button class="b" data-a="find">Search</button></div>`+(F&&!a?`<p class="er">No account found</p>`:"")+(a?`<div class="cd2"><b>${E(a.name)}</b> ${badge(a.st)}<p class="mu">#${a.no} · ${a.type} · ${E(a.email)}</p><h2>${inr(a.bal)}</h2>${a.role=="ADMIN"?"":`<button class="b w" data-a="block" data-n="${a.no}">Block account</button> <button class="b r" data-a="del" data-n="${a.no}">Delete account (OTP)</button>`}</div>`:"")},
+create:()=>head("Create Account")+`<div class="fm"><input id="cn" placeholder="Customer name"><select id="ct"><option>SAVINGS</option><option>CURRENT</option></select><input id="ce" type="email" placeholder="Email"><input id="cb" type="number" placeholder="Opening balance"><button class="b" data-a="mk">Create (ACTIVE)</button></div>`,
+adep:()=>head("Deposit")+`<div class="fm">${amt("dn","Account no.")}${amt("da","Amount")}<button class="b" data-a="ad">Pay with Razorpay</button></div>`,
+awd:()=>head("Withdraw")+`<div class="fm">${amt("wn","Account no.")}${amt("wa","Amount")}<button class="b" data-a="aw">Send OTP to customer</button></div>`,
+atx:()=>{const a=T&&acc(T);return head("Transaction History")+`<div class="row"><input id="tn" type="number" placeholder="Account no. (try 1002)" value="${T||""}"><button class="b" data-a="at">Search</button></div>`+(T&&!a?`<p class="er">No account found</p>`:"")+(a?`<p class="mu" style="margin-bottom:.6rem">${E(a.name)} · ${inr(a.bal)}</p>`+txT(S.t.filter(t=>t.f==T||t.t==T)):"")}};
+const VC={
+home:()=>{const a=acc(U);return `<div class="av">${E(a.name[0])}</div><h2 style="text-align:center">Welcome, ${E(a.name)}</h2><p class="mu" style="text-align:center">Account #${a.no} · ${a.type}</p><div class="bal"><p class="mu">AVAILABLE BALANCE</p><h2>${inr(a.bal)}</h2></div>`},
+dep:()=>head("Deposit")+`<div class="fm">${amt("ca","Amount")}<button class="b" data-a="cd">Pay with Razorpay</button></div>`,
+xfer:()=>head("Transfer")+`<div class="fm">${amt("xr","Receiver account no. (try 1003)")}${amt("xa","Amount")}<button class="b" data-a="xf">Send OTP &amp; transfer</button></div>`,
+txs:()=>head("All Transactions")+txT(S.t.filter(t=>t.f==U||t.t==U),U),
+mini:()=>head("Mini Statement")+`<p class="mu" style="margin-bottom:.6rem">Last 5 transactions</p>`+txT(S.t.filter(t=>t.f==U||t.t==U).slice(0,5),U)};
+const loginV=()=>`<div class="g2"><div class="cd2"><h3>🛡️ Admin</h3><p class="mu">Goes straight to the console, as in the real app.</p><code>admin@vbank.demo / Admin@123</code><button class="b" data-a="q" data-e="admin@vbank.demo" data-p="Admin@123">Sign in as Admin</button></div>
+<div class="cd2"><h3>👤 Customer</h3><p class="mu">Login needs an email OTP; the sandbox shows the code on screen.</p><code>riya@vbank.demo / Demo@123</code><button class="b" data-a="q" data-e="riya@vbank.demo" data-p="Demo@123">Sign in as Customer</button></div></div>
+<div class="g2"><div class="cd2"><h3>Manual login</h3><input id="le" type="email" placeholder="Email"><input id="lp" type="password" placeholder="Password"><button class="b g" data-a="in">Log in</button></div>
+<div class="cd2"><h3>New customer sign-up</h3><input id="rn" placeholder="Name"><input id="re" type="email" placeholder="Email"><input id="rp" type="password" placeholder="Password"><button class="b g" data-a="reg">Register (pending approval)</button></div></div>`;
+function login(e,p){const a=S.a.find(x=>x.email==e&&x.pw==p);if(!a)return toast("Invalid Email or Password",1);
+if(a.st!="ACTIVE")return toast(a.st=="PENDING"?"Your account registration is pending admin approval.":"Your account registration request was rejected.",1);
+const go=()=>{U=a.no;V=a.role=="ADMIN"?"all":"home";draw()};a.role=="ADMIN"?go():otp("Customer login verification.",go)}
+function draw(){const m=$("#app");if(!U){m.innerHTML=loginV();return}
+const a=acc(U),ad=a.role=="ADMIN";m.innerHTML=`<div class="tb"><b>${ad?"🛡️ Admin Console":"🏦 V-Bank"}</b><div class="tabs">${(ad?AT:CT).map(([k,l])=>`<button class="tab ${k==V?"on":""}" data-a="tab" data-v="${k}">${l}</button>`).join("")}</div><span class="mu2">${E(a.name)}</span><button class="b r s" data-a="out">Logout</button></div><div class="mn">${(ad?VA:VC)[V]()}</div><div class="ft">Sandbox data lives only in your browser · <button class="lk" data-a="rs">Reset demo data</button></div>`}
+const n_=id=>$("#"+id).value,bad=(a,m,s)=>!a?(toast("Account not found",1),1):m<=0?(toast("Invalid amount",1),1):s&&a.bal<m?(toast("Insufficient balance",1),1):0;
+const A={
+tab:d=>{V=d.v;draw()},in:()=>login(n_("le").trim(),n_("lp")),q:d=>login(d.e,d.p),out:()=>{U=null;draw()},rs:()=>{seed();U=null;draw();toast("Demo data reset")},
+reg:()=>{const n=n_("rn").trim(),e=n_("re").trim();if(!n||!e)return toast("Enter name and email",1);if(S.a.some(a=>a.email==e))return toast("Email already registered!",1);
+S.a.push({no:S.nx++,name:n,email:e,pw:n_("rp")||"Demo@123",type:"SAVINGS",bal:1000,role:"CUSTOMER",st:"PENDING"});toast("Registered. Sign in as Admin → Pending to approve.");draw()},
+ap:d=>{acc(d.n).st=d.s;toast(`Account #${d.n} ${d.s.toLowerCase()}`);draw()},
+find:()=>{F=+n_("q")||null;draw()},block:d=>{acc(d.n).st="PENDING";toast("Account blocked (status set to PENDING)");draw()},
+del:d=>otp(`Confirm deletion of account #${d.n}.`,()=>{const a=acc(d.n),ad=acc(U);ad.bal+=a.bal;tx(a.no,ad.no,a.bal,"DELETION_SWEEP");S.a=S.a.filter(x=>x!=a);F=null;toast("Deleted. Remaining balance moved to admin.");draw()}),
+mk:()=>{const n=n_("cn").trim(),e=n_("ce").trim();if(!n||!e)return toast("Name and email required",1);if(S.a.some(a=>a.email==e))return toast("Email address is already registered!",1);
+S.a.push({no:S.nx++,name:n,email:e,pw:"Demo@123",type:n_("ct"),bal:+n_("cb")||0,role:"CUSTOMER",st:"ACTIVE"});toast("Account created with ACTIVE status");draw()},
+ad:()=>{const a=acc(n_("dn")),m=+n_("da");if(bad(a,m))return;pay(m,()=>{a.bal+=m;tx(a.no,a.no,m,"DEPOSIT");toast("Deposit successful");draw()})},
+aw:()=>{const a=acc(n_("wn")),m=+n_("wa");if(bad(a,m,1))return;otp("The OTP goes to the customer’s registered email.",()=>{a.bal-=m;tx(a.no,a.no,m,"WITHDRAW");toast("Withdrawal successful");draw()})},
+at:()=>{T=+n_("tn")||null;draw()},
+cd:()=>{const m=+n_("ca");if(m<=0)return toast("Invalid amount",1);pay(m,()=>{acc(U).bal+=m;tx(U,U,m,"DEPOSIT");toast("Deposit successful");draw()})},
+xf:()=>{const r=acc(n_("xr")),s=acc(U),m=+n_("xa");if(!r)return toast("Receiver account not found.",1);if(r==s)return toast("Cannot transfer money to your own account.",1);if(bad(s,m,1))return;
+otp(`Send ${inr(m)} to ${E(r.name)}.`,()=>{s.bal-=m;r.bal+=m;tx(s.no,r.no,m,"TRANSFER");toast("Transfer successful");draw()})},
+jump:d=>{U=d.r=="A"?1001:1002;V=d.v;draw()}};
+document.addEventListener("click",e=>{const t=e.target.closest("[data-a]");if(!t)return;A[t.dataset.a](t.dataset);if((t.dataset.sc||t.dataset.a=="jump"))$("#demo").scrollIntoView()});
+const FA=[["all","All, active and pending account directories"],["pending","Approve or reject new sign-ups"],["search","Search, block or delete an account","Deletion needs an OTP and sweeps the balance to admin"],["create","Create an account (instantly ACTIVE)"],["adep","Deposit via Razorpay"],["awd","Withdraw with customer-email OTP"],["atx","Per-account transaction history"]],
+FC=[["home","OTP-verified login and live balance"],["dep","Deposit via Razorpay"],["xfer","Transfer with receiver check and OTP"],["txs","Full transaction history"],["mini","Mini statement (last 5)"]];
+const fl=(l,r)=>l.map(([v,t,s])=>`<li><button data-a="jump" data-r="${r}" data-v="${v}">${t}${s?`<small>${s}</small>`:""}</button></li>`).join("");
+$("#fa").innerHTML=fl(FA,"A");$("#fc").innerHTML=fl(FC,"C");
+if(REPO_URL){const r=$("#repo");r.href=REPO_URL;r.hidden=false}
+seed();draw();
+</script>
+</body>
+</html>
